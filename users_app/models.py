@@ -55,17 +55,18 @@ class VendorUser(models.Model):
 # ============================ Dont Remove Previous Models ================================
 
 class CustomUser(AbstractUser):
-    firstname = models.CharField(max_length=100)
-    lastname = models.CharField(max_length=100)
+    firs_tname = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
-    password = models.CharField(max_length=128)
+    #password = models.CharField(max_length=128)
     national_id = models.CharField(max_length=10)
     address = models.TextField()
     status = models.CharField(max_length=20, default='active')
     joined_at = models.DateTimeField(auto_now_add=True)
-    
-
+    username = None
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
 class AdminProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='admin_profile', on_delete=models.CASCADE)

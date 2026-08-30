@@ -12,8 +12,8 @@ def migrate_users_forward(apps, schema_editor):
     for admin in admin_user.objects.all():
         admin_profile.objects.create(
             user = custom_user.objects.create(
-                firstname = admin.firstname,
-                lastname = admin.lastname,
+                first_name = admin.firstname,
+                last_name = admin.lastname,
                 email = admin.email,
                 phone = admin.phone,
                 password = admin.password,
@@ -22,7 +22,7 @@ def migrate_users_forward(apps, schema_editor):
                 status = admin.status,
                 joined_at = admin.joined_at,
                 is_staff = True,
-                is_superuser = True
+                is_superuser = True,
             ) ,
             admin_code = admin.admin_code,
             permissions_json = admin.permissions_json
