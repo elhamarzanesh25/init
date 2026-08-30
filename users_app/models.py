@@ -55,11 +55,8 @@ class VendorUser(models.Model):
 # ============================ Dont Remove Previous Models ================================
 
 class CustomUser(AbstractUser):
-    firs_tname = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
-    #password = models.CharField(max_length=128)
     national_id = models.CharField(max_length=10)
     address = models.TextField()
     status = models.CharField(max_length=20, default='active')
