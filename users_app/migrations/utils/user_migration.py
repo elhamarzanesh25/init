@@ -23,6 +23,7 @@ def migrate_users_forward(apps, schema_editor):
                 joined_at = admin.joined_at,
                 is_staff = True,
                 is_superuser = True,
+                username = admin.email
             ) ,
             admin_code = admin.admin_code,
             permissions_json = admin.permissions_json
@@ -39,7 +40,8 @@ def migrate_users_forward(apps, schema_editor):
                 national_id = customer.national_id,
                 address = customer.address,
                 status = customer.status,
-                joined_at = customer.joined_at
+                joined_at = customer.joined_at,
+                username = customer.email
                 ) ,
             zipcode = customer.zipcode,
             birth_date = customer.birth_date,
@@ -58,7 +60,8 @@ def migrate_users_forward(apps, schema_editor):
                 national_id = vendor.national_id,
                 address = vendor.address,
                 status = vendor.status,
-                joined_at = vendor.joined_at
+                joined_at = vendor.joined_at,
+                username = vendor.email
             ) ,
             shop_name = vendor.shop_name,
             shop_address = vendor.shop_address,

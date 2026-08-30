@@ -61,9 +61,6 @@ class CustomUser(AbstractUser):
     address = models.TextField()
     status = models.CharField(max_length=20, default='active')
     joined_at = models.DateTimeField(auto_now_add=True)
-    username = None
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
 
 class AdminProfile(models.Model):
     user = models.OneToOneField(CustomUser, related_name='admin_profile', on_delete=models.CASCADE)
