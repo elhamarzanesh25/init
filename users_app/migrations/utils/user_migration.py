@@ -20,30 +20,32 @@ def migrate_users_forward(apps, schema_editor):
                 national_id = admin.national_id,
                 address = admin.address,
                 status = admin.status,
-                joined_at = admin.joined_at
+                joined_at = admin.joined_at,
+                is_staff = True,
+                is_superuser = True
             ) ,
             admin_code = admin.admin_code,
             permissions_json = admin.permissions_json
         )
 
-    for customer in custom_user.objects.all():
-            customer_profile.objects.create(
-                user = custom_user.objects.create(
-                    firstname = customer.firstname,
-                    lastname = customer.lastname,
-                    email = customer.email,
-                    phone = customer.phone,
-                    password = customer.password,
-                    national_id = customer.national_id,
-                    address = customer.address,
-                    status = customer.status,
-                    joined_at = customer.joined_at
+    for customer in customer_user.objects.all():
+        customer_profile.objects.create(
+            user = custom_user.objects.create(
+                firstname = customer.firstname,
+                lastname = customer.lastname,
+                email = customer.email,
+                phone = customer.phone,
+                password = customer.password,
+                national_id = customer.national_id,
+                address = customer.address,
+                status = customer.status,
+                joined_at = customer.joined_at
                 ) ,
-                zipcode = customer.zipcode,
-                birth_date = customer.birth_date,
-                gender = customer.gender,
-                loyalty_points = customer.loyalty_points
-            )
+            zipcode = customer.zipcode,
+            birth_date = customer.birth_date,
+            gender = customer.gender,
+            loyalty_points = customer.loyalty_points
+        )
 
     for vendor in vendor_user.objects.all():
         vendor_profile.objects.create(

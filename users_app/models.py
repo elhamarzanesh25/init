@@ -81,7 +81,7 @@ class CustomerProfile(models.Model):
 
 
 class VendorProfile(models.Model):
-    user = models.OneToOneField(CustomUser, related_name='verdor_profile', on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, related_name='vendor_profile', on_delete=models.CASCADE)
     shop_name = models.CharField(max_length=150)
     shop_address = models.TextField()
     shop_license_number = models.CharField(max_length=50)
